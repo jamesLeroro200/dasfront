@@ -1,0 +1,53 @@
+
+    <p>{{norm.name}}</p>
+    <div>
+        <p>{{norm.version}}</p>
+        <p>{{norm.description}}</p>
+        <div class ="search-div">
+    <button mat-raised-button (click)="onCreat()">
+        <mat-icon>add</mat-icon>Create
+    </button>
+    <mat-form-field class="search-form-field">
+        <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" (click)="onSearchClear()">
+                <mat-icon>close</mat-icon>
+            </button>
+    </mat-form-field>
+
+<div class="mat-elevation-z8">
+    <mat-table [dataSource]="LisData" matSort>
+        <ng-container matColumnDef="title">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Title</mat-header-cell>
+            <mat-cell *matCellDef ="let element">{{element.title}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="actions" >
+                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                <mat-cell *matCellDef ="let row" style="justify-content: flex-end;">
+                <!--   <button mat-icon-button (click)="onUpdate(row)"><mat-icon>launch</mat-icon></button>-->
+                    <button mat-icon-button (click)="onUpdate(row)"><mat-icon>visibility</mat-icon></button>
+                    <button mat-icon-button color="warn" (click)="onDelet(row)"><mat-icon>delete_outline</mat-icon></button>                  
+                </mat-cell>
+        </ng-container>
+       <!-- <ng-container matColumnDef="loading">
+                <mat-footer-cell *matFooterCellDef clospan="6">
+                    Loading data...
+                </mat-footer-cell>
+        </ng-container> -->
+        <ng-container matColumnDef="noData">
+                <mat-footer-cell *matFooterCellDef clospan="6">
+                    No data.
+                </mat-footer-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumn"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumn;"></mat-row>
+      <!--   <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':LisData!=null}"></mat-footer-row> -->
+        <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide': !(LisData!=null && LisData.data.length == 0)}"></mat-footer-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5,10,25,100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+</div>
+    </div>
+</div>
+
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="large" type="ball-spin-clockwise">  
+    <p style="color: white">DAS</p>  
+    </ngx-spinner> 

@@ -1,0 +1,462 @@
+
+
+<!------ Include the above in your HEAD tag ---------->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+<form class="well form-horizontal" [formGroup]="companyForm"  (ngSubmit)="onSubmit()">
+  <div class="titeleOfHeader ">Update a Data of company</div>
+       <table class="table table-striped">
+        <thead>
+          <tr>
+            
+          </tr>
+        </thead>
+          <tbody>
+             <tr>
+              <td colspan="1" class="sizeTd">
+                 
+                <fieldset>
+                   <div class="form-group">
+                      <label class="col-md-4 control-label" > Company Name <span>*</span></label>
+                      <div class="col-md-8 inputGroupContainer">
+                        <div class="input-group"><span class="input-group-addon"><i class="fa fa-city"></i></span>  <input type="text" class="form-control"  formControlName="companyName"    [(ngModel)]="company.companyName" required
+                         [ngClass]="{'is-invalid': validation.validationMsg.formErrors.companyName}"
+                         (blur)="handleBlurValidation()" />
+                       <div class="invalid-feedback">
+                         {{validation.validationMsg.formErrors.companyName}}
+                       </div>
+                        </div>
+                        </div>
+                   </div>
+                   <div class="form-group">
+                      <label class="col-md-4 control-label" > Business Sectors <span>*</span></label>
+                      <div class="col-md-8 inputGroupContainer">
+                        <div class="input-group"><span class="input-group-addon"><i class="fa fa-city"></i></span>   <select   class="selectpicker form-control" 
+                        formControlName="idBusinessSectors"  [(ngModel)]="company.idBusinessSectors" required  style ="height: fit-content;" [ngClass]="{'is-invalid': validation.validationMsg.formErrors.idBusinessSectors}" (change)="getbrancheCode($event.target.value)">
+                        <option  *ngFor="let businessSector of listBusinessSectors"  [ngValue]= "businessSector.code" >{{businessSector.code }}  {{businessSector.description }}</option>
+                     </select>
+                     <div class="invalid-feedback">
+                      {{validation.validationMsg.formErrors.idBusinessSectors}}
+                    </div>
+                      </div>
+                      </div>
+                   </div>
+                   <div class="form-group">
+                    <label class="col-md-4 control-label" > Branch Code <span>*</span></label>
+                    <div class="col-md-8 inputGroupContainer">
+                      <div class="input-group"><span class="input-group-addon"><i class="fa fa-city"></i></span><select   class="selectpicker form-control"  [ngClass]="{'is-invalid': validation.validationMsg.formErrors.idBranchCode}"
+                      formControlName="idBranchCode"   [(ngModel)]="company.idBranchCode"required  style ="height: fit-content;" >
+                      <option ></option>
+                      <option  *ngFor="let branchCode of listBrancheCode"   [ngValue]= "branchCode.qsmTechnecal"  >{{branchCode.qsmTechnecal }}  {{branchCode.description }}</option>
+                   </select>
+                   <div class="invalid-feedback">
+                    {{validation.validationMsg.formErrors.idBranchCode}}
+                  </div>
+                    </div>
+                    </div>
+                 </div>
+                   <div class="form-group">
+                      <label class="col-md-4 control-label" >Company Phone <span>*</span></label>
+                      <div class="col-md-8 inputGroupContainer">
+                        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>  <input type="text" formControlName="companyPhone"  [(ngModel)]="company.companyPhone" required class="form-control"
+                        [ngClass]="{'is-invalid': validation.validationMsg.formErrors.companyPhone}"
+                        (blur)="handleBlurValidation()" />
+                      <div class="invalid-feedback">
+                        {{validation.validationMsg.formErrors.companyPhone}}
+                      </div>    
+                    </div>
+                    </div>
+                   </div>
+                   <div class="form-group">
+                      <label class="col-md-4 control-label">Annual Sale</label>
+                      <div class="col-md-8 inputGroupContainer">
+                        <div class="input-group"><span class="input-group-addon"><i class="fa fa-sort-numeric-up"></i></span>   <input type="text" formControlName="annualSale"   [(ngModel)]="company.annualSale" name="AnnualSale"
+                        class="form-control" >
+                     
+    
+                         </div>
+                         </div>
+                   </div>
+                   <div class="form-group">
+                    <label class="col-md-4 control-label" > Country <span>*</span></label>
+                    <div class="col-md-8 inputGroupContainer">
+                      <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>   <select   class="selectpicker form-control"  (change)="selectchange($event.target.value)"
+                      formControlName="country" [(ngModel)]="company.country" required  style ="height: fit-content;" [ngClass]="{'is-invalid': validation.validationMsg.formErrors.country}"  >
+                      <option  *ngFor="let item of filteredOption | async"  [value]="item"  > {{item}}</option>
+                   </select>
+                   <div class="invalid-feedback">
+                    {{validation.validationMsg.formErrors.country}}
+                  </div> 
+                    </div>
+                    </div>
+                 </div> 
+                 <div class="form-group">
+                  <label class="col-md-4 control-label" > Region <span>*</span></label>
+                  <div class="col-md-8 inputGroupContainer">
+                    <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>   <select   class="selectpicker form-control"   [ngClass]="{'is-invalid': validation.validationMsg.formErrors.region}"
+                    formControlName="region" [(ngModel)]="company.region" (change)="refresh()" required  style ="height: fit-content;"  >
+                    <option></option>
+                     <option  *ngFor="let item of filteredCitiesOption | async" [value]="item"> {{item}}</option>
+                 </select>
+                 <div class="invalid-feedback">
+                  {{validation.validationMsg.formErrors.region}}
+                </div>
+                  </div>
+                  </div>
+               </div>  
+                   <div class="form-group">
+                      <label class="col-md-4 control-label"  >Adress <span>*</span></label>
+                      <div class="col-md-8 inputGroupContainer">
+                         <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span> <input type="text"  formControlName="adress"   [(ngModel)]="company.adress" required name="Adress" class="form-control"
+                          [ngClass]="{'is-invalid': validation.validationMsg.formErrors.adress}"
+                          (blur)="handleBlurValidation()" />
+                        <div class="invalid-feedback">
+                          {{validation.validationMsg.formErrors.adress}}
+                        </div>
+                      </div>
+                      </div>
+                   </div>
+                   <div class="form-group">
+                      <label class="col-md-4 control-label" >  Zip Code Adress <span>*</span></label>
+                      <div class="col-md-8 inputGroupContainer">
+                         <div class="input-group">
+                          <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>    <input type="text" formControlName="zipCodeAdress"  pattern="^[0-9]*$" [(ngModel)]="company.zipCodeAdress" required name="ZipCodeAdress"
+                          class="form-control" [ngClass]="{'is-invalid': validation.validationMsg.formErrors.zipCodeAdress}"
+                          (blur)="handleBlurValidation()" />
+                        <div class="invalid-feedback">
+                          {{validation.validationMsg.formErrors.zipCodeAdress}}
+                        </div>
+                      </div>
+                         </div>
+                         </div>
+                      </div>
+                   
+                 
+                   <div class="form-group">
+                    <label class="col-md-4 control-label" > Employee Number <span>*</span></label>
+                    <div class="col-md-8 inputGroupContainer">
+                       <div class="input-group"><span class="input-group-addon"><i class="fa fa-sort-numeric-up"></i></span><input type="number"  formControlName="employeeNumber"   [(ngModel)]="company.employeeNumber" required
+                        name="EmployeeNumber" class="form-control"
+                        [ngClass]="{'is-invalid': validation.validationMsg.formErrors.employeeNumber}"
+                        (blur)="handleBlurValidation()" />
+                      <div class="invalid-feedback">
+                        {{validation.validationMsg.formErrors.employeeNumber}}
+                      </div></div>
+                    </div>
+                 </div>
+                
+                   
+                 
+                </fieldset>
+             
+          </td>
+          <!--**********************************************************************************************************************************-->
+          <td colspan="1" class="sizeTd">
+           
+            <fieldset>
+               <div class="form-group">
+                  <label class="col-md-4 control-label" >Search Terms </label>
+                  <div class="col-md-8 inputGroupContainer">
+                    <div class="input-group"><span class="input-group-addon"><i class="fa fa-search"></i></span> <input type="text" name="SearchTerms"  class="form-control"
+                      formControlName="searchTerms"  [(ngModel)]="company.searchTerms">
+                    </div>
+                    </div>
+               </div>
+              
+          
+               <div class="form-group">
+                  <label class="col-md-4 control-label" >  Company Email <span>*</span></label>
+                  <div class="col-md-8 inputGroupContainer">
+                    <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>   <input type="email" class="form-control"  required formControlName="companyEmail"  [(ngModel)]="company.companyEmail"
+                      [ngClass]="{'is-invalid': validation.validationMsg.formErrors.companyEmail}"
+                      (blur)="handleBlurValidation()" />
+                    <div class="invalid-feedback">
+                      {{validation.validationMsg.formErrors.companyEmail}}
+                    </div>
+                </div>
+                </div>
+               </div>
+       
+              
+               <div class="form-group">
+                  <label class="col-md-4 control-label"> House Nr </label>
+                  <div class="col-md-8 inputGroupContainer">
+                     <div class="input-group"><span class="input-group-addon"><i class="fa fa-sort-numeric-up"></i></span> <input type="text"  formControlName="houseNr"  [(ngModel)]="company.houseNr" name="HouseNr"
+                      class="form-control" />
+                  </div>
+                  </div>
+               </div>
+               <div class="form-group">
+                  <label class="col-md-4 control-label" >PO Box Adress <span>*</span></label>
+                  <div class="col-md-8 inputGroupContainer">
+                     <div class="input-group">
+                      <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>   <input type="text"  class="form-control" formControlName="poBoxAdress"  [(ngModel)]="company.poBoxAdress" required
+                        name="POBoxAdress" [ngClass]="{'is-invalid': validation.validationMsg.formErrors.poBoxAdress}"
+                        (blur)="handleBlurValidation()">
+                      <div class="invalid-feedback">
+                        {{validation.validationMsg.formErrors.poBoxAdress}}
+                      </div>
+                  </div>
+                     </div>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">  PO Box Number </label>
+                    <div class="col-md-8 inputGroupContainer">
+                       <div class="input-group"><span class="input-group-addon"> <i class="fa fa-sort-numeric-up"></i></span>  <input type="text"  formControlName="poBoxNumber"  [(ngModel)]="company.poBoxNumber" name="POBoxNumber" class="form-control"/></div>
+                    </div>
+                 </div>
+               
+               <div class="form-group">
+                  <label class="col-md-4 control-label" > Zip Code Box  </label>
+                  <div class="col-md-8 inputGroupContainer">
+                     <div class="input-group"><span class="input-group-addon"><i class="fa fa-sort-numeric-up"></i></span>  <input type="text"  formControlName="zipCodeBox"  [(ngModel)]="company.zipCodeBox" name="ZipCodeBox"
+                      class="form-control" /></div>
+                  </div>
+               </div>
+     
+               <div class="form-group">
+                <label class="col-md-4 control-label" > Num .Register of Commerce <span>*</span></label>
+                <div class="col-md-8 inputGroupContainer">
+                  <div class="input-group"><span class="input-group-addon"><i class="fa fa-sort-numeric-up"></i></span>    <input type="text"   name="numRegisterofCommerce" formControlName="numRegisterofCommerce"  [(ngModel)]="company.numRegisterofCommerce" required
+                    class="form-control"
+                    [ngClass]="{'is-invalid': validation.validationMsg.formErrors.numRegisterofCommerce}"
+                    (blur)="handleBlurValidation()" />
+                  <div class="invalid-feedback">
+                    {{validation.validationMsg.formErrors.numRegisterofCommerce}}
+                  </div>
+                  </div>
+                  </div>
+             </div>
+             <div class="form-group">
+              <label class="col-md-4 control-label" > Register of Commerce <span>*</span></label>
+              <div class="col-md-8 inputGroupContainer">
+                <div class="input-group"><span class="input-group-addon"><i class="fa fa-file-pdf"></i></span>      <input type="file" accept="application/pdf,.doc,.docx" formControlName="registerofCommerce"    name="registerofCommerce" id="registerofCommerce" 
+                  [ngClass]="{'is-invalid': validation.validationMsg.formErrors.registerofCommerce}"
+                  (blur)="handleBlurValidation()"
+                  (change)="handleFileInput($event.target.files)">
+                  
+                  <div class="invalid-feedback" style="display: block;">
+                    {{validation.validationMsg.formErrors.registerofCommerce}}
+                  </div>
+                  <div *ngIf="verifTypeDocRegisterOfCommerce"class="invalid-feedback" style="display: block;">
+                    {{messgeErreurTypeDoc}}
+                   </div>
+                  
+                  </div>
+
+                </div>
+           </div>
+           <div class="form-group">
+            <label class="col-md-4 control-label" >  Download Register of Commerce <span>*</span></label>
+            <div class="col-md-8 inputGroupContainer">
+              <div class="input-group"><span class="input-group-addon"><i class="fa fa-cloud-download-alt"></i></span>      <button   type="button"  class="btn-link"  [hidden]='company.registerOfCommerceName==null' (click)="downloadFile(company.id,'registerOfCommerce')" > {{company.registerOfCommerceName}} </button> 
+                
+                </div>
+
+              </div>
+         </div>
+           <div class="form-group">
+            <label class="col-md-4 control-label" >Tax Number <span>*</span></label>
+            <div class="col-md-8 inputGroupContainer">
+              <div class="input-group"><span class="input-group-addon"><i class="fa fa-sort-numeric-up"></i></span>     <input type="text"  name="taxNumber" formControlName="taxNumber"   [(ngModel)]="company.taxNumber" required class="form-control"
+                [ngClass]="{'is-invalid': validation.validationMsg.formErrors.taxNumber}"
+                (blur)="handleBlurValidation()" />
+              <div class="invalid-feedback" style="display: block;">
+                {{validation.validationMsg.formErrors.taxNumber}}
+              </div>
+              </div>
+              </div>
+         </div>
+         <div class="form-group">
+          <label class="col-md-4 control-label" > Tax Id Sheet <span>*</span></label>
+          <div class="col-md-8 inputGroupContainer">
+            <div class="input-group"><span class="input-group-addon"><i class="fa fa-file-pdf"></i></span>    <input type="file"   accept="application/pdf,.doc,.docx" formControlName="taxIdSheet"      name="taxIdSheet" id="taxIdSheet"   
+              [ngClass]="{'is-invalid': validation.validationMsg.formErrors.taxIdSheet}"
+              (blur)="handleBlurValidation()"
+                (change)="handleFileInputTaxShit($event.target.files)"> 
+                <div class="invalid-feedback">
+                  {{validation.validationMsg.formErrors.taxIdSheet}}
+                </div>
+                <div *ngIf="verifTypeDocTaxId"class="invalid-feedback" style="display: block;">
+                  {{messgeErreurTypeDoc}}
+                 </div>
+                </div>
+            </div>
+       </div>
+       <div class="form-group">
+        <label class="col-md-4 control-label" > Download  Tax Id Sheet <span>*</span></label>
+        <div class="col-md-8 inputGroupContainer">
+          <div class="input-group"><span class="input-group-addon"><i class="fa fa-cloud-download-alt"></i></span>   <button type="button" class="  btn-link "  [hidden]='company.taxIdSheetName==null' (click)="downloadFile(company.id,'taxIdSheet')">{{company.taxIdSheetName}}</button> 
+          
+              </div>
+          </div>
+     </div>
+            
+              
+            </fieldset>
+         
+      </td>
+              <td colspan="1" class="sizeTd">
+                 
+                <fieldset>
+                   <div class="form-group">
+                      <label class="col-md-4 control-label" > Representative First Name<span>*</span></label>
+                      <div class="col-md-8 inputGroupContainer">
+                        <div class="input-group"><span class="input-group-addon"><i class="fa fa-user-tie"></i></span>  <input type="text" class="form-control"  formControlName="representativeFirstName"  [(ngModel)]="company.representativeFirstName" required
+                         [ngClass]="{'is-invalid': validation.validationMsg.formErrors.representativeFirstName}"
+                         (blur)="handleBlurValidation()" />
+                       <div class="invalid-feedback">
+                         {{validation.validationMsg.formErrors.representativeFirstName}}
+                       </div>
+                        </div>
+                        </div>
+                   </div>
+                   <div class="form-group">
+                    <label class="col-md-4 control-label" >Representative Last Name <span>*</span></label>
+                    <div class="col-md-8 inputGroupContainer">
+                      <div class="input-group"><span class="input-group-addon"><i class="fa fa-user-tie"></i></span>  <input type="text" class="form-control"  formControlName="representativeLastName"   [(ngModel)]="company.representativeLastName" required
+                       [ngClass]="{'is-invalid': validation.validationMsg.formErrors.representativeLastName}"
+                       (blur)="handleBlurValidation()" />
+                     <div class="invalid-feedback">
+                       {{validation.validationMsg.formErrors.representativeLastName}}
+                     </div>
+                      </div>
+                      </div>
+                 </div>
+                   <div class="form-group">
+                    <label class="col-md-4 control-label" >Representative Position <span>*</span></label>
+                    <div class="col-md-8 inputGroupContainer">
+                      <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>  <input type="text"  formControlName="representativePosition"  [(ngModel)]="company.representativePosition" required
+                        name="RepresentativePosition" class="form-control"
+                        [ngClass]="{'is-invalid': validation.validationMsg.formErrors.representativePosition}"
+                        (blur)="handleBlurValidation()" />
+                      <div class="invalid-feedback">
+                        {{validation.validationMsg.formErrors.representativePosition}}
+                      </div>
+                      </div>
+                      </div>
+                 </div>
+                 <div class="form-group">
+                  <label class="col-md-4 control-label" >Representative Phone <span>*</span></label>
+                  <div class="col-md-8 inputGroupContainer">
+                    <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>  <input type="text"  formControlName="representativePhone"   [(ngModel)]="company.representativePhone" required
+                      name="RepresentativePhone" class="form-control"
+                      [ngClass]="{'is-invalid': validation.validationMsg.formErrors.representativePhone}"
+                      (blur)="handleBlurValidation()" />
+                    <div class="invalid-feedback">
+                      {{validation.validationMsg.formErrors.representativePhone}}
+                    </div>
+                    </div>
+                    </div>
+               </div>
+               <div class="form-group">
+                <label class="col-md-4 control-label" > Representative Email  <span>*</span></label>
+                <div class="col-md-8 inputGroupContainer">
+                  <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>  <input type="email"  formControlName="representativeEmail"  [(ngModel)]="company.representativeEmail" required
+                    name="RepresentativeEmail" class="form-control"
+                    [ngClass]="{'is-invalid': validation.validationMsg.formErrors.representativeEmail}"
+                    (blur)="handleBlurValidation()" />
+                  <div class="invalid-feedback">
+                    {{validation.validationMsg.formErrors.representativeEmail}}
+                  </div>
+                  </div>
+                  </div>
+             </div>
+             <div class="form-group">
+              <label class="col-md-4 control-label" > Choose Super User<span>*</span></label>
+              <div class="col-md-8 inputGroupContainer">
+                <div class="input-group"><span class="input-group-addon"><i class="fa fa-user-tie"></i></span>       <select   formControlName="superUser"     class="selectpicker form-control" [(ngModel)]="company.superUser" [ngClass]="{'is-invalid': validation.validationMsg.formErrors.superUser}" style ="height: fit-content;" >
+                  <option selected [ngValue]="company.superUser">{{company.superUser.firstName}} {{company.superUser.lastName}}</option>
+                  <option *ngFor="let superUser of listSuperUser" [ngStyle]="{'display':company.superUser.id === superUser.id ? 'none' : '' }"  [ngValue]="superUser" >{{superUser.firstName }}  {{superUser.lastName }}</option>
+                </select>
+                <div class="invalid-feedback" >
+                  {{validation.validationMsg.formErrors.superUser}}
+                </div>
+               </div>
+                </div>
+           </div>
+             
+       <div class="form-group">
+        <label class="col-md-4 control-label" > Other legal File</label>
+        <div class="col-md-8 inputGroupContainer">
+          <div class="input-group"><span class="input-group-addon"><i class="fa fa-file-pdf"></i></span>      <input type="file"  accept="application/pdf,.doc,.docx" formControlName="otherFile" name="otherFile" id="otherFile"
+            (change)="handleFileInputOtherFile($event.target.files)">  
+            <div *ngIf="verifTypeDocOtherFile"class="invalid-feedback" style="display: block;">
+              {{messgeErreurTypeDoc}}
+             </div>
+          </div>
+          
+          </div>
+     </div>
+     <div class="form-group">
+      <label class="col-md-4 control-label" > Download  other file</label>
+      <div class="col-md-8 inputGroupContainer">
+        <div class="input-group"><span class="input-group-addon"><i class="fa fa-cloud-download-alt"></i></span>   <button type="button" class=" btn-link "   [hidden]='company.otherFileName==null'  (click)="downloadFile(company.id, 'otherFile')">{{company.otherFileName}}</button> 
+        
+            </div>
+        </div>
+   </div>
+   <div class="form-group">
+    <label class="col-md-4 control-label" > Logo <span>*</span></label>
+    <div class="col-md-8 inputGroupContainer">
+      <div class="input-group"><span class="input-group-addon"><i class="fa fa-file-image"></i></span>      <input type="file"   accept="image/x-png,image/jpg,image/jpeg"    formControlName="logoId" name="logoId" id="logoId" [ngClass]="{'is-invalid': validation.validationMsg.formErrors.logoId}"
+        (change)="onFileSelected($event)">  
+        <div class="invalid-feedback" style="display: block;">
+          {{validation.validationMsg.formErrors.logoId}}
+        </div>
+        <div *ngIf="verifTypeDocLog"class="invalid-feedback" style="display: block;">
+          {{messgeErreurTypelog}}
+         </div>
+      </div>
+   
+      </div>
+ </div>
+ <div class="form-group">
+  <label class="col-md-4 control-label" > Download  Logo</label>
+  <div class="col-md-8 inputGroupContainer">
+    <div class="input-group"><span class="input-group-addon"><i class="fa fa-cloud-download-alt"></i></span>   <button type="button" class=" btn-link "   [hidden]='company.logoId==null'  (click)="downloadFile(company.id, 'logoId')">{{company.logoIdName}}</button> 
+    
+        </div>
+    </div>
+</div>
+    
+   <div class="form-group">
+    <label class="col-md-4 control-label" >Activated</label>
+    <div class="col-md-8 inputGroupContainer">
+      <section class="example-section chekBoxStyle">
+        <mat-checkbox class="example-margin" formControlName="enable" [(ngModel)]="company.enable"></mat-checkbox>
+      </section>
+      </div>
+ </div>
+   
+      
+                   
+                 
+                  
+                   
+                </fieldset>
+             
+          </td>
+               
+            <!--*********************************************************************************-->
+           
+                
+               
+             </tr>
+          </tbody>
+       </table>
+       <div class="button-row">
+        <div *ngIf="verifUplodFile" class="invalid-feedback btn-block" style="display: block;">
+          <h4>{{messgeErreurUplodFile}}</h4>
+         </div>
+        <button class="btn btn-block" type="submit"   >Update Company</button>
+        
+        <!--[disabled]="f.invalid"-->
+         </div>
+       
+      </form>
+      <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="large" type="ball-spin-clockwise">  
+        <p style="color: white">DAS</p>  
+        </ngx-spinner> 
+      
+    

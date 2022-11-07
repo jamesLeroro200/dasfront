@@ -1,0 +1,25 @@
+h3 {
+  position: relative;
+}
+.box app-users-list {
+  text-align: center;
+  position: relative;
+  top: 80px;
+}
+.box app-reviewers-list {
+  text-align: center;
+  position: relative;
+  top: 80px;
+}
+.box {
+  width: 70%;
+  height: 200px;
+  background: #fff;
+  margin: 40px auto;
+}
+
+.effect1 {
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+  -moz-box-shadow: 0 10px 6px -6px #777;
+  box-shadow: 0 10px 6px -6px #777;
+}

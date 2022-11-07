@@ -1,0 +1,55 @@
+<div class ="header">   
+    <h3>Application Reviewer list</h3>
+</div>
+<div class ="search-div">
+<button mat-raised-button (click)="onCreat()">
+    <mat-icon>add</mat-icon>Create
+</button>
+</div>
+<div class="mat-elevation-z8" >
+<mat-table [dataSource]="LisData" matSort>
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+        <mat-cell *matCellDef ="let element">{{element.name}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="version">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Version</mat-header-cell>
+            <mat-cell *matCellDef ="let element">{{element.version}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="reviewerOneDeadline">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Rev1 Duration (H)</mat-header-cell>
+        <mat-cell *matCellDef ="let element">{{element.reviewerOneDeadline}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="reviewerTwoDeadline">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Rev2 Duration (H)</mat-header-cell>
+        <mat-cell *matCellDef ="let element">{{element.reviewerTwoDeadline}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Description</mat-header-cell>
+            <mat-cell *matCellDef ="let element">{{element.description}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="status">
+            <mat-header-cell *matHeaderCellDef>Activated</mat-header-cell>
+            <mat-cell *matCellDef ="let element"><mat-checkbox class="example-margin" [(ngModel)]="element.status" disabled="true"></mat-checkbox></mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="actions" class = "actions">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef ="let row">
+                <button mat-icon-button (click)="onUpdate(row)"><mat-icon>launch</mat-icon></button>
+                <button type="button" class="btn btn-warning btn-sm" (click)="edit(row)">Edit Application</button> 
+            </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="noData">
+            <mat-footer-cell *matFooterCellDef clospan="6">
+                No data.
+            </mat-footer-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumn"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumn;"></mat-row>
+    <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide': !(LisData!=null && LisData.data.length == 0)}"></mat-footer-row>
+</mat-table>
+<mat-paginator [pageSizeOptions]="[5,10,25,100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+</div>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="large" type="ball-spin-clockwise">  
+    <p style="color: white">DAS</p>  
+    </ngx-spinner> 

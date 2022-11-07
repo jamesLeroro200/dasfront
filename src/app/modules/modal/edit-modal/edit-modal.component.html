@@ -1,0 +1,47 @@
+<form [formGroup]= "createDialogueNormForm" class="form" #normForm="ngForm" >
+  <mat-form-field hintLabel="" class="Left-input">
+    <mat-select placeholder="Name" name="Name" [(ngModel)]="recievedData.name" formControlName="name" (selectionChange)="getSelected($event)" required>
+      <mat-option  
+        *ngFor="let recognizedStandards of listRecognizedStandards" [value]="recognizedStandards">{{recognizedStandards.description}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field hintLabel="">
+    <input matInput #input placeholder="Version" name="Version" [(ngModel)]="recievedData.version" formControlName="version"
+      autocomplete="off" readonly>
+  </mat-form-field>
+  <mat-divider></mat-divider>
+  <mat-form-field hintLabel="" class="Left-input">
+    <input matInput #input placeholder="Price $" required name="Price" [(ngModel)]="recievedData.price" formControlName="price"
+      autocomplete="off" type="number" min="0">
+  </mat-form-field>
+  <mat-form-field hintLabel="" class="Left-input">
+    <input matInput #input placeholder="Chapters N°" name="Chapters" [(ngModel)]="NumberOfChapters" required
+    autocomplete="off" type="number"  min="1" formControlName="NumberOfChapters">
+  </mat-form-field>
+  
+ 
+  <mat-divider></mat-divider>
+  <mat-form-field hintLabel="" class="Left-input">
+    <input matInput #input placeholder="Rev1 Duration (H)" name="Rev1 Duration (H)" type="number" formControlName="reviewerOneDeadline"
+      [(ngModel)]="recievedData.reviewerOneDeadline"  min="3" required autocomplete="off">
+  </mat-form-field>
+  <mat-form-field hintLabel="">
+    <input matInput #input placeholder="Rev2 Duration (H)" name="Rev2 Duration (H)" [(ngModel)]="recievedData.reviewerTwoDeadline" required
+      autocomplete="off" type="number"  min="3" formControlName="reviewerTwoDeadline">
+  </mat-form-field>
+  <mat-divider></mat-divider>
+  <mat-form-field hintLabel="" class="Left-input">
+    <input matInput #input placeholder="Validity Period (Y)" name="Validity Period (Y)" type="number"
+      [(ngModel)]="recievedData.validityPeriod"  min="0" formControlName="validityPeriod" required autocomplete="off">
+  </mat-form-field>
+  <mat-divider></mat-divider>
+  <mat-form-field hintLabel="">
+    <textarea matInput placeholder="Leave a comment" name="Description"
+      [(ngModel)]="recievedData.description"></textarea>
+  </mat-form-field>
+  <div mat-dialog-actions>
+    <button type="submit" (click)="onSubmit()" mat-raised-button style="background-color: green;" cdkFocusInitial>Save</button>
+    <button mat-raised-button type="reset" color="warn" (click)="onClose()">Cancel</button>
+  </div>
+</form>

@@ -1,0 +1,75 @@
+<mat-toolbar
+  color="primary"
+  style="
+    min-height: 50px !important;
+    height: 30px !important;
+    background-color: #008299;
+  "
+>
+  <mat-toolbar-row>
+    <div>
+      <img src="../../../../assets/logo-text-white.png"/>
+    </div>
+    <button (click)="onToggle()" mat-icon-button aria-label="Example icon button with a menu icon" class="ml-5" *ngIf="sideBarService.showLogout">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+
+
+    <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+      <ul fxLayout="row" fxLayoutGap="20px">
+        <li>
+          <button mat-icon-button>
+            <mat-icon>settings</mat-icon>
+          </button>
+        </li>
+        <li>
+          <button mat-icon-button>
+            <mat-icon>help_outline</mat-icon>
+          </button>
+        </li>
+        <li>
+          <button mat-button [matMenuTriggerFor]="menu">
+            <mat-icon>person_outline</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <a class="dropdown-item waves-light" mdbWavesEffect href="/">
+              <button mat-menu-item><mat-icon>home</mat-icon> Home</button></a
+            >
+            <a
+              *ngIf="sideBarService.showLogin"
+              class="dropdown-item waves-light"
+              mdbWavesEffect
+              (click)="redirectToLogin()"
+            >
+              <button mat-menu-item>
+                <mat-icon>power_settings_new</mat-icon>Login
+              </button></a
+            >
+            <a
+              *ngIf="sideBarService.showLogin"
+              class="dropdown-item waves-light"
+              mdbWavesEffect
+              (click)="openReegistry()"
+            >
+              <button mat-menu-item>
+                <mat-icon>person_add</mat-icon>Register
+              </button></a
+            >
+            <a
+              *ngIf="sideBarService.showLogout"
+              class="dropdown-item waves-light"
+              mdbWavesEffect
+              (click)="logOut()"
+              href="#"
+            >
+              <button mat-menu-item>
+                <mat-icon>exit_to_app</mat-icon>Sign Out
+              </button></a
+            >
+          </mat-menu>
+        </li>
+      </ul>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

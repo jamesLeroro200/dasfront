@@ -1,0 +1,28 @@
+<button type="button" class="close" (click)="onNoClick();" data-dismiss="modal" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>
+<br>
+<mdb-card>
+  <mdb-card-body class="px-lg-5 pt-0">
+    <div>
+      <h4 style="text-align: center; background-color: gray;">Upload Profile Photo</h4>
+    </div>
+    <br>
+    <div style="color: red;" *ngIf="error"><h6>{{error}}</h6></div>
+       
+    <div>
+      <input type="file" placeholder ="Upload File"accept="image/*" value="Please select a Profile photo" (change)="onFileSelected($event)" />
+  </div>
+  <br>
+  <mat-divider></mat-divider>
+    <mat-hint style="font-size: x-small;font-style: italic;color:navy;">*File size cannot be more than 2MB
+    </mat-hint><br><br>
+
+    <div class="wrapper">
+      <button style="justify-content: center;" (click)="onUploadPhoto()">Upload</button>
+    </div>
+      </mdb-card-body>
+</mdb-card>
+
+
+

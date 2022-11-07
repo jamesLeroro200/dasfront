@@ -1,0 +1,154 @@
+<button type="button" class="close" (click) = "onNoClick();" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <!-- Material form register -->
+  <br>
+  <div class="container1">
+    <div class="card">
+  
+      <h3>Sign up</h3>
+  
+      <!--Card content-->
+      <div class="card-body px-lg-5 pt-0">
+  
+        <!-- Form -->
+        <form [formGroup]="registerForm"  (ngSubmit)="onSubmit(registerForm.value)" class="text-center" style="color: #757575;" >
+          <br>
+          <div class="form-row">
+            <div class="col">
+              <!-- First Name-->
+              <div class="md-form mt-0">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="First Name *" formControlName="firstName"
+                      [ngClass]="{'is-invalid': validation.validationMsg.formErrors.firstName}"
+                      (blur)="handleBlurValidation()" />
+                    <div class="invalid-feedback">
+                      {{validation.validationMsg.formErrors.firstName}}
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <!-- Last Name-->
+              <div class="md-form mt-0">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Last Name *" formControlName="lastName"
+                      [ngClass]="{'is-invalid': validation.validationMsg.formErrors.lastName}"
+                      (blur)="handleBlurValidation()" />
+                    <div class="invalid-feedback">
+                      {{validation.validationMsg.formErrors.lastName}}
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <!-- Country -->
+              <div class="md-form">
+                  <div class="form-group">
+                    <mat-form-field>
+                      <mat-label>Country *</mat-label>
+                      <mat-select placeholder="Country *"  #dropdown  formControlName="country"    (selectionChange)="selectchange($event)"  [ngClass]="{'is-invalid': validation.validationMsg.formErrors.country}"
+                      (blur)="handleBlurValidation()">
+                        <mat-option *ngFor="let item of filteredOption | async" [value]="item"    >
+                          {{item}}
+                        </mat-option>
+                        <div class="invalid-feedback">
+                          {{validation.validationMsg.formErrors.country}}
+                        </div> 
+                      </mat-select>
+                    </mat-form-field>  
+                  </div>               
+              </div>
+            </div>
+            <div class="col">
+              <!-- Region -->
+              <div class="md-form">
+                <div class="form-group">
+                  <mat-form-field>
+                    <mat-label>Region *</mat-label>
+                    <mat-select    formControlName="region"    (selectionChange)="refresh()" [ngClass]="{'is-invalid': validation.validationMsg.formErrors.region}"
+                    (blur)="handleBlurValidation()">
+                     <mat-option *ngFor="let item of filteredCitiesOption | async" [value]="item"  >
+                        {{item}}
+                      </mat-option>
+                      <div class="invalid-feedback">
+                        {{validation.validationMsg.formErrors.region}}
+                      </div> 
+                    </mat-select>
+                  </mat-form-field>     
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <!-- Adress -->
+              <div class="md-form">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Address *" formControlName="adress"
+                      [ngClass]="{'is-invalid': validation.validationMsg.formErrors.adress}"
+                      (blur)="handleBlurValidation()" />
+                    <div class="invalid-feedback">
+                      {{validation.validationMsg.formErrors.adress}}
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <!-- Zip -->
+              <div class="md-form">
+                <div class="form-group">
+                  <input class="form-control" placeholder="Zip Code *" formControlName="zip"
+                      [ngClass]="{'is-invalid': validation.validationMsg.formErrors.zip}"
+                      (blur)="handleBlurValidation()" type="text"/>
+                    <div class="invalid-feedback">
+                      {{validation.validationMsg.formErrors.zip}}
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- E-mail -->
+          <div class="md-form mt-0">
+            <div class="form-group">
+              <input class="form-control" placeholder="Email *" formControlName="email"
+                  [ngClass]="{'is-invalid': validation.validationMsg.formErrors.email}"
+                  (blur)="handleBlurValidation()" type="email"/>
+                <div class="invalid-feedback">
+                  {{validation.validationMsg.formErrors.email}}
+                </div>
+            </div>
+          </div>
+          <!-- Password -->
+          <div class="md-form">
+            <div class="form-group">
+              <input class="form-control" placeholder="Password *" formControlName="password"
+                  [ngClass]="{'is-invalid': validation.validationMsg.formErrors.password}"
+                  (blur)="handleBlurValidation()" type="password"/>
+                <div class="invalid-feedback">
+                  {{validation.validationMsg.formErrors.password}}
+                </div>
+            </div>
+          </div>
+          <!-- Sign up button -->
+          <div class="button-row">
+            <button type="submit" [disabled]="!registerForm.valid"  class="btn">Sign in</button>
+            <!--<div *ngIf="success" class="alert alert-success" role="alert">{{success}}</div> -->
+          </div>
+          <div *ngIf="error" class="alertRed">{{error}}</div>
+          
+          <hr>
+          <!-- Terms of service -->
+          <p>By clicking
+            <em>Sign up</em> you agree to our
+            <a href="" target="_blank">terms of service</a>
+            
+        </form>
+        <!-- Form -->
+      </div>
+  
+    </div>
+  </div>
+  <!-- Material form register -->

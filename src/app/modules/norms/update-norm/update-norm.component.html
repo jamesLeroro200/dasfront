@@ -1,0 +1,48 @@
+<form [formGroup]= "updateDialogueNormForm" class="form" #normForm="ngForm" >
+  
+    <mat-form-field hintLabel="" class="Left-input">
+      <mat-select placeholder="Name" name="Name"  formControlName="name" (selectionChange)="getSelected($event)" required>
+        <mat-option  
+          *ngFor="let recognizedStandards of listRecognizedStandards" [value]="recognizedStandards.discription">{{recognizedStandards.description}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field hintLabel="">
+      <input matInput #input placeholder="Version" name="Version"  formControlName="version"
+        autocomplete="off" readonly>
+    </mat-form-field>
+    <mat-divider></mat-divider>
+    <mat-form-field hintLabel="" class="Left-input">
+      <input matInput #input placeholder="Price $" required name="Price"  type="number" formControlName="price"
+        autocomplete="off">
+    </mat-form-field>
+    <mat-form-field hintLabel="" class="Left-input">
+      <input matInput #input placeholder="Chapters N°" name="Chapters" required
+      autocomplete="off" type="number"  min="1" formControlName="NumberOfChapters">
+    </mat-form-field>
+    <mat-divider></mat-divider>
+    <mat-form-field hintLabel="" class="Left-input">
+      <input matInput #input placeholder="Rev1 Duration (H)" name="Rev1 Duration (H)" type="number"
+        required autocomplete="off" formControlName="reviewerOneDeadline">
+    </mat-form-field>
+    <mat-form-field hintLabel="">
+      <input matInput #input placeholder="Rev2 Duration (H)" name="Rev2 Duration (H)"  required
+      type="number"  autocomplete="off" formControlName="reviewerTwoDeadline">
+    </mat-form-field>
+
+    <mat-divider></mat-divider>
+    <mat-form-field hintLabel="" class="Left-input">
+      <input matInput #input placeholder="Validity Period (Y)" name="Validity Period (Y)" type="number"
+        formControlName="validityPeriod"required autocomplete="off">
+    </mat-form-field>
+
+    <mat-divider></mat-divider>
+    <mat-form-field hintLabel="">
+      <textarea matInput placeholder="Leave a comment" name="Description"
+       ></textarea>
+    </mat-form-field>
+    <div mat-dialog-actions>
+        <button type="submit" mat-raised-button style="background-color: rgb(96, 224, 21);" [mat-dialog-close]="recievedData" cdkFocusInitial>Save</button>
+        <button mat-raised-button color="warn" (click)="onClose()">Cancel</button>
+    </div>
+  </form>

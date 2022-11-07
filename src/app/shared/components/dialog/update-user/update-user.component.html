@@ -1,0 +1,40 @@
+<div *ngIf=errorMessage><h5 style="color: red;">{{errorMessage}}</h5></div>
+<form [formGroup]="createDialogueUserForm"  class= "form" #userForm="ngForm">
+    <mat-form-field hintLabel="" class="Left-input">
+        <input matInput #input maxlength="20" placeholder="Name" [(ngModel)]="recievedData.firstName" required formControlName="firstName" class="Name">
+      </mat-form-field>
+      <mat-form-field hintLabel="">
+        <input matInput #input maxlength="20" placeholder="Last Name" [(ngModel)]="recievedData.lastName" required formControlName="lastName">
+      </mat-form-field>
+      <mat-divider></mat-divider>
+      <mat-form-field class="Left-input">
+        <input matInput placeholder="Enter your email" [formControl]="email" required [(ngModel)]="recievedData.email" formControlName="email">
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+    <ngx-mat-intl-tel-input
+      [preferredCountries]="['us', 'gb']"
+      [enablePlaceholder]="true"
+      [enableSearch]="true"
+      name="phone"
+      [(ngModel)]="recievedData.phone" [ngModelOptions]="{standalone: true}"></ngx-mat-intl-tel-input>
+        <mat-icon matSuffix>phone</mat-icon>
+        <mat-hint>Include area code</mat-hint>
+      </mat-form-field>
+      <mat-divider></mat-divider>
+      <mat-divider></mat-divider>
+       <select class="select-css" [compareWith]="compareFn"  ngDefaultControl  [(ngModel)]="recievedData.linkedSuperUser" formControlName="superUserSelect"  style ="height: fit-content;" >
+        <option [value]=null > Choose Super User</option>  
+         <option    *ngFor="let superUser of listSuperUser" [ngValue]="superUser" >{{superUser.firstName }}  {{superUser.lastName }}</option>
+   
+      </select> 
+   
+    
+     
+      <mat-divider></mat-divider>
+      <mat-checkbox [(ngModel)]="recievedData.status" name="status" [ngModelOptions]="{standalone: true}">Status Active/not Active ?</mat-checkbox>
+      <div mat-dialog-actions>
+          <button type="submit" mat-raised-button (click)="createOrUpdateUsersData()" [disabled]="!createDialogueUserForm.valid"  style="background-color: rgb(96, 224, 21);" >Save</button>
+          <button mat-raised-button color="warn" (click)="onClose()">Cancel</button>
+      </div>
+    </form>

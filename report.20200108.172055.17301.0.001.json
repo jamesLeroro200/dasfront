@@ -1,0 +1,427 @@
+
+{
+  "header": {
+    "reportVersion": 1,
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20200108.172055.17301.0.001.json",
+    "dumpEventTime": "2020-01-08T17:20:55Z",
+    "dumpEventTimeStamp": "1578500455171",
+    "processId": 17301,
+    "cwd": "/home/hamza/Desktop/dashboardAdmin/dashboard",
+    "commandLine": [
+      "/usr/bin/node",
+      "/home/hamza/Desktop/dashboardAdmin/dashboard/node_modules/jest-worker/build/workers/processChild.js"
+    ],
+    "nodejsVersion": "v13.0.1",
+    "glibcVersionRuntime": "2.30",
+    "glibcVersionCompiler": "2.17",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "linux",
+    "componentVersions": {
+      "node": "13.0.1",
+      "v8": "7.8.279.17-node.14",
+      "uv": "1.33.1",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "79",
+      "nghttp2": "1.39.2",
+      "napi": "5",
+      "llhttp": "1.1.4",
+      "openssl": "1.1.1d",
+      "cldr": "35.1",
+      "icu": "64.2",
+      "tz": "2019a",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "headersUrl": "https://nodejs.org/download/release/v13.0.1/node-v13.0.1-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v13.0.1/node-v13.0.1.tar.gz"
+    },
+    "osName": "Linux",
+    "osRelease": "5.3.0-24-generic",
+    "osVersion": "#26-Ubuntu SMP Thu Nov 14 01:33:18 UTC 2019",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz",
+        "speed": 2399,
+        "user": 58471900,
+        "nice": 177300,
+        "sys": 33676400,
+        "idle": 658335200,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz",
+        "speed": 2399,
+        "user": 35610000,
+        "nice": 529300,
+        "sys": 52595300,
+        "idle": 239398500,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz",
+        "speed": 2400,
+        "user": 37249500,
+        "nice": 500400,
+        "sys": 36040200,
+        "idle": 252308200,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz",
+        "speed": 2400,
+        "user": 36694400,
+        "nice": 430800,
+        "sys": 32422300,
+        "idle": 255261600,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz",
+        "speed": 2399,
+        "user": 38735200,
+        "nice": 319800,
+        "sys": 27771800,
+        "idle": 257585800,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz",
+        "speed": 2400,
+        "user": 37766400,
+        "nice": 426900,
+        "sys": 24661200,
+        "idle": 261191700,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz",
+        "speed": 2400,
+        "user": 37592200,
+        "nice": 449000,
+        "sys": 21979000,
+        "idle": 263479200,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz",
+        "speed": 2400,
+        "user": 38475100,
+        "nice": 325500,
+        "sys": 19987100,
+        "idle": 265273200,
+        "irq": 0
+      }
+    ],
+    "networkInterfaces": [
+      {
+        "name": "lo",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "127.0.0.1",
+        "netmask": "255.0.0.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "wlp3s0",
+        "internal": false,
+        "mac": "80:2b:f9:ae:ab:99",
+        "address": "10.10.49.230",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "lo",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "::1",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "wlp3s0",
+        "internal": false,
+        "mac": "80:2b:f9:ae:ab:99",
+        "address": "fe80::5eeb:887e:c828:bd47",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 3
+      }
+    ],
+    "host": "sapres"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x0000000000b0d955",
+      "symbol": "report::TriggerNodeReport(v8::Isolate*, node::Environment*, char const*, char const*, std::string const&, v8::Local<v8::String>) [/usr/bin/node]"
+    },
+    {
+      "pc": "0x00000000009e9573",
+      "symbol": "node::OnFatalError(char const*, char const*) [/usr/bin/node]"
+    },
+    {
+      "pc": "0x0000000000b4333e",
+      "symbol": "v8::Utils::ReportOOMFailure(v8::internal::Isolate*, char const*, bool) [/usr/bin/node]"
+    },
+    {
+      "pc": "0x0000000000b436b9",
+      "symbol": "v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, bool) [/usr/bin/node]"
+    },
+    {
+      "pc": "0x0000000000cf0495",
+      "symbol": " [/usr/bin/node]"
+    },
+    {
+      "pc": "0x0000000000cf0b26",
+      "symbol": "v8::internal::Heap::RecomputeLimits(v8::internal::GarbageCollector) [/usr/bin/node]"
+    },
+    {
+      "pc": "0x0000000000cfd35a",
+      "symbol": "v8::internal::Heap::PerformGarbageCollection(v8::internal::GarbageCollector, v8::GCCallbackFlags) [/usr/bin/node]"
+    },
+    {
+      "pc": "0x0000000000cfe265",
+      "symbol": "v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [/usr/bin/node]"
+    },
+    {
+      "pc": "0x0000000000d00d0c",
+      "symbol": "v8::internal::Heap::AllocateRawWithRetryOrFail(int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment) [/usr/bin/node]"
+    },
+    {
+      "pc": "0x0000000000cc75cb",
+      "symbol": "v8::internal::Factory::NewFillerObject(int, bool, v8::internal::AllocationType, v8::internal::AllocationOrigin) [/usr/bin/node]"
+    },
+    {
+      "pc": "0x000000000100b6de",
+      "symbol": "v8::internal::Runtime_AllocateInYoungGeneration(int, unsigned long*, v8::internal::Isolate*) [/usr/bin/node]"
+    },
+    {
+      "pc": "0x000000000138df79",
+      "symbol": " [/usr/bin/node]"
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 2151419904,
+    "totalCommittedMemory": 2149739240,
+    "usedMemory": 2139207800,
+    "availableMemory": 48369808,
+    "memoryLimit": 2197815296,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 262144,
+        "committedMemory": 33088,
+        "capacity": 32808,
+        "used": 32808,
+        "available": 0
+      },
+      "new_space": {
+        "memorySize": 2097152,
+        "committedMemory": 1219640,
+        "capacity": 1047456,
+        "used": 192632,
+        "available": 854824
+      },
+      "old_space": {
+        "memorySize": 2009182208,
+        "committedMemory": 2009009656,
+        "capacity": 2000302904,
+        "used": 2000230768,
+        "available": 72136
+      },
+      "code_space": {
+        "memorySize": 1740800,
+        "committedMemory": 1510816,
+        "capacity": 1437760,
+        "used": 1437760,
+        "available": 0
+      },
+      "map_space": {
+        "memorySize": 1576960,
+        "committedMemory": 1405400,
+        "capacity": 923040,
+        "used": 923040,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 136511488,
+        "committedMemory": 136511488,
+        "capacity": 136388008,
+        "used": 136388008,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 49152,
+        "committedMemory": 49152,
+        "capacity": 2784,
+        "used": 2784,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 1047456,
+        "used": 0,
+        "available": 1047456
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 195.28,
+    "kernelCpuSeconds": 3.93095,
+    "cpuConsumptionPercent": 234.366,
+    "maxRss": 2278383616,
+    "pageFaults": {
+      "IORequired": 0,
+      "IONotRequired": 1242215
+    },
+    "fsActivity": {
+      "reads": 0,
+      "writes": 0
+    }
+  },
+  "uvthreadResourceUsage": {
+    "userCpuSeconds": 73.3565,
+    "kernelCpuSeconds": 1.81641,
+    "cpuConsumptionPercent": 88.4387,
+    "fsActivity": {
+      "reads": 0,
+      "writes": 16
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "SHELL": "/bin/bash",
+    "SESSION_MANAGER": "local/sapres:@/tmp/.ICE-unix/2582,unix/sapres:/tmp/.ICE-unix/2582",
+    "COLORTERM": "truecolor",
+    "XDG_CONFIG_DIRS": "/etc/xdg/xdg-ubuntu:/etc/xdg",
+    "XDG_MENU_PREFIX": "gnome-",
+    "GNOME_DESKTOP_SESSION_ID": "this-is-deprecated",
+    "GTK_IM_MODULE": "ibus",
+    "QT4_IM_MODULE": "ibus",
+    "LC_ADDRESS": "en_US.UTF-8",
+    "GNOME_SHELL_SESSION_MODE": "ubuntu",
+    "LC_NAME": "en_US.UTF-8",
+    "SSH_AUTH_SOCK": "/run/user/1000/keyring/ssh",
+    "XMODIFIERS": "@im=ibus",
+    "DESKTOP_SESSION": "ubuntu",
+    "LC_MONETARY": "en_US.UTF-8",
+    "SSH_AGENT_PID": "2490",
+    "GTK_MODULES": "gail:atk-bridge",
+    "DBUS_STARTER_BUS_TYPE": "session",
+    "PWD": "/home/hamza/Desktop/dashboardAdmin/dashboard",
+    "LOGNAME": "hamza",
+    "XDG_SESSION_DESKTOP": "ubuntu",
+    "XDG_SESSION_TYPE": "x11",
+    "GPG_AGENT_INFO": "/run/user/1000/gnupg/S.gpg-agent:0:1",
+    "XAUTHORITY": "/run/user/1000/gdm/Xauthority",
+    "WINDOWPATH": "2",
+    "HOME": "/home/hamza",
+    "USERNAME": "hamza",
+    "IM_CONFIG_PHASE": "1",
+    "LC_PAPER": "en_US.UTF-8",
+    "LANG": "en_US.UTF-8",
+    "LS_COLORS": "rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:",
+    "XDG_CURRENT_DESKTOP": "ubuntu:GNOME",
+    "VTE_VERSION": "5802",
+    "GNOME_TERMINAL_SCREEN": "/org/gnome/Terminal/screen/6baff935_4b70_4956_8424_b88bb1c68d89",
+    "PERL5LIB": "/home/hamza/perl5/lib/perl5",
+    "INVOCATION_ID": "24224c6c39f242f7a2dca4189135cc9e",
+    "MANAGERPID": "2348",
+    "CLUTTER_IM_MODULE": "ibus",
+    "LESSCLOSE": "/usr/bin/lesspipe %s %s",
+    "XDG_SESSION_CLASS": "user",
+    "TERM": "xterm-256color",
+    "LC_IDENTIFICATION": "en_US.UTF-8",
+    "PERL_MB_OPT": "--install_base \"/home/hamza/perl5\"",
+    "LESSOPEN": "| /usr/bin/lesspipe %s",
+    "USER": "hamza",
+    "GNOME_TERMINAL_SERVICE": ":1.106",
+    "PERL_MM_OPT": "INSTALL_BASE=/home/hamza/perl5",
+    "DISPLAY": ":0",
+    "SHLVL": "1",
+    "LC_TELEPHONE": "en_US.UTF-8",
+    "QT_IM_MODULE": "ibus",
+    "LC_MEASUREMENT": "en_US.UTF-8",
+    "DBUS_STARTER_ADDRESS": "unix:path=/run/user/1000/bus,guid=ab71233c692d2bf16ed1a97e5e12eef6",
+    "PAPERSIZE": "letter",
+    "XDG_RUNTIME_DIR": "/run/user/1000",
+    "LC_TIME": "en_US.UTF-8",
+    "JOURNAL_STREAM": "9:46663",
+    "XDG_DATA_DIRS": "/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop",
+    "PERL_LOCAL_LIB_ROOT": "/home/hamza/perl5",
+    "PATH": "/home/hamza/perl5/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin",
+    "GDMSESSION": "ubuntu",
+    "DBUS_SESSION_BUS_ADDRESS": "unix:path=/run/user/1000/bus,guid=ab71233c692d2bf16ed1a97e5e12eef6",
+    "LC_NUMERIC": "en_US.UTF-8",
+    "_": "/usr/bin/ng",
+    "WEBPACK_DEV_SERVER": "true",
+    "JEST_WORKER_ID": "4",
+    "FORCE_COLOR": "1"
+  },
+  "userLimits": {
+    "core_file_size_blocks": {
+      "soft": 0,
+      "hard": "unlimited"
+    },
+    "data_seg_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "file_size_blocks": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_locked_memory_bytes": {
+      "soft": 67108864,
+      "hard": 67108864
+    },
+    "max_memory_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "open_files": {
+      "soft": 1048576,
+      "hard": 1048576
+    },
+    "stack_size_bytes": {
+      "soft": 8388608,
+      "hard": "unlimited"
+    },
+    "cpu_time_seconds": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_user_processes": {
+      "soft": 63427,
+      "hard": 63427
+    },
+    "virtual_memory_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    }
+  },
+  "sharedObjects": [
+    "linux-vdso.so.1",
+    "/lib/x86_64-linux-gnu/libdl.so.2",
+    "/usr/lib/x86_64-linux-gnu/libstdc++.so.6",
+    "/lib/x86_64-linux-gnu/libm.so.6",
+    "/lib/x86_64-linux-gnu/libgcc_s.so.1",
+    "/lib/x86_64-linux-gnu/libpthread.so.0",
+    "/lib/x86_64-linux-gnu/libc.so.6",
+    "/lib64/ld-linux-x86-64.so.2"
+  ]
+}

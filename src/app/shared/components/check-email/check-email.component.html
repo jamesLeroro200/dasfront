@@ -1,0 +1,46 @@
+<div class="container1">
+  <div class="card">
+    <h3>Reset Password</h3>
+
+    <!--Card content-->
+    <div class="card-body px-lg-5 pt-0">
+      <!-- Form -->
+      <h6>
+        Please enter your email address .We will send you an email to reset your
+        password.
+      </h6>
+      <br />
+      <br />
+      <form
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+        class="text-center"
+        style="color: #757575"
+      >
+        <!-- E-mail -->
+        <div class="md-form mt-0">
+          <div class="form-group">
+            <input
+              class="form-control"
+              placeholder="Email *"
+              [(ngModel)]="form.email"
+              #email="ngModel"
+              name="email"
+              type="email"
+            />
+          </div>
+        </div>
+
+        <!-- Sign up button -->
+        <div class="button-row">
+          <button type="submit" class="btn">Check Email</button>
+          <!--<div *ngIf="success" class="alert alert-success" role="alert">{{success}}</div> -->
+          <div *ngIf="errorMessage" class="alertRed">{{ errorMessage }}</div>
+        </div>
+      </form>
+      <!-- Form -->
+    </div>
+  </div>
+</div>

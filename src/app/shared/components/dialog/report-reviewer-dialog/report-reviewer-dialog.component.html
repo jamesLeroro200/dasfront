@@ -1,0 +1,23 @@
+<form class= "form" #userForm="ngForm">
+    <mat-form-field hintLabel="" class="Left-input">
+        <input matInput #input placeholder="Name" [(ngModel)]="recievedData.name"  name="name" >
+      </mat-form-field>
+      <mat-form-field hintLabel="">
+        <input matInput #input  placeholder="Version" [(ngModel)]="recievedData.version"  name="version">
+      </mat-form-field>
+      <mat-divider></mat-divider>
+      <mat-form-field >
+        <input matInput #input placeholder="Description" [(ngModel)]="recievedData.description" name="description">
+      </mat-form-field>
+      <mat-divider></mat-divider>
+        <select   class="select-css"   [(ngModel)]="recievedData.norm" [ngModelOptions]="{standalone: true}"  style ="height: fit-content;" >
+            <option  selected value="" > Choose Norm</option>  
+            <option   *ngFor="let norm of listNorm" [ngValue]="norm" >{{norm.name}}</option>
+        </select> 
+      <mat-divider></mat-divider>
+      <mat-checkbox [(ngModel)]="recievedData.status" name="status">Status Active/not Active ?</mat-checkbox>
+      <div mat-dialog-actions>
+          <button type="submit" mat-raised-button style="background-color: rgb(96, 224, 21);" [mat-dialog-close]="recievedData" cdkFocusInitial>Save</button>
+          <button mat-raised-button color="warn" (click)="onClose()">Cancel</button>
+      </div>
+    </form>

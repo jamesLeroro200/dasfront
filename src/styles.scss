@@ -1,0 +1,66 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+    height: 100%;
+
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.hover-cursor {
+    cursor: pointer;
+}
+
+.svc-creator-tab {
+    display: -webkit-box !important;
+
+    width: 120vh !important;
+
+
+}
+s
+
+
+
+survey-creator *,
+.svc-creator * {
+    scrollbar-width: thin !important;
+    scrollbar-color: var(--border, #d6d6d6) transparent !important;
+    position: relative;
+}
+
+.svc-flex-column {
+    display: -webkit-box !important;
+    display: flex !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+    flex-direction: column !important;
+}
+
+.sv-action-bar-item {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: -webkit-box;
+    display: flex;
+    height: calc(5 * var(--base-unit, 8px));
+    padding: calc(1 * var(--base-unit, 8px));
+    box-sizing: border-box;
+    border: none;
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, 0);
+    color: var(--foreground, #161616);
+    cursor: pointer;
+    line-height: calc(3 * var(--base-unit, 8px));
+    font-size: calc(2 * var(--base-unit, 8px));
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+    white-space: nowrap;
+}

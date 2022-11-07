@@ -1,0 +1,45 @@
+.card {
+  width: 500px;
+  position: absolute;
+  margin: 150px 480px;
+}
+
+.btn {
+  background: #008299;
+  color: #fff;
+}
+
+h6 {
+  color: rgb(143, 142, 142);
+}
+
+h3 {
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  color: #fff;
+  background-color: #008299;
+}
+.close {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  width: 6px;
+  font-size: 40px;
+  -moz-appearance: none;
+  appearance: none;
+  margin-right: 0px;
+  margin-left: 2px;
+  margin-top: -20px;
+  background: none !important;
+  outline: none !important;
+  color: rgb(146, 154, 161);
+}
+
+.close:hover {
+  color: #000;
+}
+
+.alertRed {
+  color: #721c24;
+}

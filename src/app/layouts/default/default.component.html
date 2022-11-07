@@ -1,0 +1,30 @@
+<app-header (toggleSideBarForMe) = "sideBarToggler()"></app-header>
+<mat-drawer-container id="cont">
+    <mat-drawer mode = "side" [opened] = "sideBarService.showSideBar">
+        <app-sidebar></app-sidebar>
+    </mat-drawer>
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>
+<app-footer></app-footer>
+<div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1"
+     role="dialog" aria-labelledby="dialog-child-name" aria-hidden="false">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="dialog-child-name" class="modal-title pull-left">You Have Been Idle!</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="onClickOK()"> </button>
+      </div>
+      <div class="modal-body">
+         Your session expired due to inactivity!!! Kindly relogin.
+        <div class="row mrgbtm">
+          <br>
+          <div class="col-md-6" style="text-align: center;">
+              <button type="button" (click)="onClickOK()" class="btn btn-success">Okay</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

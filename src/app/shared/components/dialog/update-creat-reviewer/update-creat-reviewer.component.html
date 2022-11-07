@@ -1,0 +1,73 @@
+<div *ngIf=errorMessage>
+  <h5 style="color: red;">{{errorMessage}}</h5>
+</div>
+<form [formGroup]="updateCreateDialogueUserForm" class="form" #userForm="ngForm">
+  <mat-form-field hintLabel="" class="Left-input">
+    <input matInput #input maxlength="20" placeholder="Name" [(ngModel)]="recievedData.firstName"
+      formControlName="firstName" name="firstName" class="Name">
+  </mat-form-field>
+  <mat-form-field hintLabel="">
+    <input matInput #input maxlength="20" placeholder="Last Name" formControlName="lastName"
+      [(ngModel)]="recievedData.lastName" name="lastName">
+  </mat-form-field>
+  <mat-divider></mat-divider>
+  <mat-form-field hintLabel="" class="Left-input">
+    <mat-select placeholder="Country *"  #dropdown  formControlName="country"   [(ngModel)]="recievedData.country"   (selectionChange)="selectchange($event)"  [ngClass]="{'is-invalid': validation.validationMsg.formErrors.country}"
+    (blur)="handleBlurValidation()">
+      <mat-option *ngFor="let item of filteredOption | async" [value]="item"    >
+        {{item}}
+      </mat-option>
+      <div class="invalid-feedback">
+        {{validation.validationMsg.formErrors.country}}
+      </div> 
+    </mat-select>
+  </mat-form-field> 
+  <mat-form-field hintLabel="" class="Left-input"> 
+    <mat-select   placeholder="Region *" formControlName="region"  [(ngModel)]="recievedData.region"  (selectionChange)="refresh()"  [ngClass]="{'is-invalid': validation.validationMsg.formErrors.region}"
+    (blur)="handleBlurValidation()">
+     <mat-option *ngFor="let item of filteredCitiesOption | async" [value]="item"  >
+        {{item}}
+      </mat-option>
+      <div class="invalid-feedback">
+        {{validation.validationMsg.formErrors.region}}
+      </div> 
+    </mat-select>
+  </mat-form-field>  
+  <mat-divider></mat-divider>
+  <mat-form-field hintLabel="" class="Left-input">
+    <mat-select  placeholder="BusinessSectors" formControlName="listIdBusinessSectors" (selectionChange)="getSelected($event)"
+      [(ngModel)]="recievedData.listIdBusinessSectors"  multiple>
+      <mat-option 
+        *ngFor="let businessSector of listBusinessSectors"  [value]="businessSector.code">{{businessSector.description}}
+      </mat-option> 
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field hintLabel="" class="Left-input">
+    <mat-select placeholder="Branche Code" formControlName="listIdBrancheCode" 
+    [(ngModel)]="recievedData.listIdBrancheCode" multiple>
+      <mat-option *ngFor="let brancheCode of listAllBrancheCode"   [value]="brancheCode.qsmTechnecal">
+        {{brancheCode.description}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-divider></mat-divider>
+  <mat-form-field class="Left-input">
+    <input matInput placeholder="Enter your email" formControlName="email" [(ngModel)]="recievedData.email" 
+      name="email">
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <ngx-mat-intl-tel-input [preferredCountries]="['us', 'gb']" [enablePlaceholder]="true" [enableSearch]="true"
+      name="phone" [(ngModel)]="recievedData.phone" [ngModelOptions]="{standalone: true}"></ngx-mat-intl-tel-input>
+    <mat-icon matSuffix>phone</mat-icon>
+    <mat-hint>Include area code</mat-hint>
+  </mat-form-field>
+  <mat-divider></mat-divider>
+  <mat-checkbox [ngModelOptions]="{standalone: true}" [(ngModel)]="recievedData.status" name="status">Status Active/not
+    Active ?</mat-checkbox>
+  <div mat-dialog-actions>
+    <button *ngIf="reviewersService.userType ==='Reviewer'" type="submit" mat-raised-button
+      style="background-color: rgb(96, 224, 21);" (click)="createOrUpdateReviewerData()"
+      [disabled]="!updateCreateDialogueUserForm.valid">Save</button>
+    <button mat-raised-button color="warn" (click)="onClose()">Cancel</button>
+  </div>
+</form>
